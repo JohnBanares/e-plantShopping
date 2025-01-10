@@ -9,6 +9,7 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
+    console.log("cart current ", cart);
     let total = 0
     cart.forEach(element => {
       const cost = element.cost.replace("$","");
@@ -49,7 +50,7 @@ const CartItem = ({ onContinueShopping }) => {
     //   console.log("before", element);
     // });
     // console.log("removing", item);
-    // dispatch(removeItem(item.name));
+    dispatch(removeItem(item.name));
     // cart.forEach(element => {
     //   console.log("after", element);
     // });
