@@ -12,17 +12,6 @@ function ProductList() {
 
     const cart = useSelector(state => state.cart.items);
 
-    useEffect(() => {
-        // console.log("current cart", cart);
-        let total = 0;
-
-        cart.forEach(element => {
-            total += element.quantity;
-        });
-        console.log("current quantity", total);
-
-    }, [cart])
-
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -290,9 +279,7 @@ function ProductList() {
     };
 
     const handleCartCount = () => {
-            // console.log("current cart", cart);
         let total = 0;
-
         cart.forEach(element => {
             total += element.quantity;
         });
