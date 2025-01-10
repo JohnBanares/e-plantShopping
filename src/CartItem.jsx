@@ -57,6 +57,10 @@ const CartItem = ({ onContinueShopping }) => {
   };
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
+    // console.log(item);
+    let total = 0
+    const cost = item.cost.replace("$","");
+    return total += cost * item.quantity; 
   };
 
   return (
