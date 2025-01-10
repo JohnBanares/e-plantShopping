@@ -390,11 +390,11 @@ function ProductList() {
                                         <p>{p.description}</p>
                                         <button className="product-button" 
                                                 onClick={() => handleAddToCart(p)}
-                                                disabled={addedTocart[p.name]}
-                                                style={{backgroundColor: addedTocart[p.name] ? "grey" : "#4caf50"}}
+                                                disabled={cart.some((item) => item.name === p.name)}
+                                                style={{backgroundColor: cart.some((item) => item.name === p.name) ? "grey" : "#4caf50"}}
                                         >
 
-                                            {addedTocart[p.name] ? "Added To Cart" : "Add To Cart"}
+                                            {cart.some((item) => item.name === p.name) ? "Added To Cart" : "Add To Cart"}
                                         </button>
                                     </div>
                                 ))}
