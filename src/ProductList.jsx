@@ -2,13 +2,27 @@ import React, { useState, useEffect } from "react";
 import "./ProductList.css";
 import CartItem from "./CartItem";
 import {addItem} from "./CartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductList() {
     const [addedTocart, setAddedToCart] = useState({});
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const dispatch = useDispatch();
+
+    const cart = useSelector(state => state.cart.items);
+
+    useEffect(() => {
+        // console.log("current cart", cart);
+        let total = 0;
+
+        cart.forEach(element => {
+            total += element.quantity;
+        });
+        console.log("current quantity", total);
+
+    }, [cart])
+
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -275,6 +289,16 @@ function ProductList() {
           }));
     };
 
+    const handleCartCount = () => {
+            // console.log("current cart", cart);
+        let total = 0;
+
+        cart.forEach(element => {
+            total += element.quantity;
+        });
+        return total;
+    }
+
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -331,7 +355,7 @@ function ProductList() {
                                         fill="white" 
                                         fontSize="100"
                                     >
-                                        1
+                                        {handleCartCount()}
                                     </text>
                                     <rect
                                         width="156"
